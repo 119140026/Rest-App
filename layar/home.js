@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet,SafeAreaView, TouchableOpacity, FlatList, Image } from 'react-native'
 import React, {useEffect} from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { fetchList } from '../redux/action'
+import { fetchList, fetchDetail } from '../redux/action'
 import { useSelector, useDispatch } from 'react-redux'
 
 const home = () => {
@@ -28,6 +28,7 @@ const home = () => {
                 return (
                     <View>
                         <TouchableOpacity style={styles.kotak} onPress={()=>{
+                            dispatch(fetchDetail(item.id))
                             navigate.navigate('desc',{
                                 id : item.id,
                             })
@@ -65,12 +66,16 @@ const styles = StyleSheet.create({
     },
     kotak:{
         flexDirection:'row',
+        borderColor: 'white',
+        borderWidth: 2,
+        borderRadius: 15,
+        marginBottom: 20
     },
     img:{
         height:100,
         width:100,
-        backgroundColor : 'red',
         marginRight: 10,
+        borderRadius: 15,
     },
     isi:{
         fontSize:20,
@@ -79,7 +84,7 @@ const styles = StyleSheet.create({
         paddingBottom:20,
     },
     isi1:{
-        fontSize:10,
+        fontSize:12,
     },
     e10:{
         height:10,

@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image,FlatList, ScrollView } from 'react-native'
 import React, {useEffect} from 'react'
+import { View, Text, StyleSheet, TouchableOpacity, Image,FlatList, ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native'
@@ -11,6 +11,8 @@ let test = false
 
 const desc = () => {
 
+   
+
     const navigate = useNavigation()
 
     const dispatch = useDispatch()
@@ -19,22 +21,19 @@ const desc = () => {
 
     const route = useRoute().params.id
     console.log(route)
-
-   useEffect (()=> {
-        console.log('hallo')
-        dispatch(fetchDetail(route))
-    },[])
-
-    // if (test == false){
-    //     test = true
-    //     dispatch(fetchDetail(route))
-    // }
+    
+   React.useEffect (()=> {
+    dispatch(fetchDetail(route))
+},[])
 
 
-    //console.log(dataDetail)
+    console.log(dataDetail)
+    
 
-  return (
+        return (
+           
     <SafeAreaView style={styles.margin}>
+        <ScrollView>
         <TouchableOpacity style={styles.header} onPress={
             ()=>{
                 //console.log(dataDetail)
@@ -42,7 +41,7 @@ const desc = () => {
                 navigate.goBack()
             }
         }>
-        <MaterialCommunityIcons name="chevron-left" color={'red'} size={24} />
+        <MaterialCommunityIcons name="chevron-left" color={'black'} size={24} />
             <Text style={styles.judul}>{dataDetail.restaurant.name}</Text>
         </TouchableOpacity>
 
@@ -70,8 +69,6 @@ const desc = () => {
             }}
         />
 
-        
-
         <Text style={styles.teks}>Minuman :</Text>
 
         <FlatList
@@ -85,7 +82,7 @@ const desc = () => {
                 )
             }}
         />
-
+</ScrollView>
     </SafeAreaView>
   )
 }
@@ -104,12 +101,12 @@ const styles = StyleSheet.create({
     },
     img : {
         height:230,
-        backgroundColor: 'red',
         marginBottom:10,
+        borderRadius:10,
     },
     desc : {
         textAlign: 'justify',
-        fontSize: 10,
+        fontSize: 12,
         marginBottom: 10,
     },
     teks : {
