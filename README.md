@@ -4,6 +4,9 @@
 2. Makruf Alkarkhi - 119140075
 3. Muhammad A.M Hikar Syahrial - 119140031
 
+**Link API**
+https://restaurant-api.dicoding.dev/
+
 ## Penjelasan Aplikasi
 Aplikasi ini memberikan jasa informasi tentang restorant-restoran
 
